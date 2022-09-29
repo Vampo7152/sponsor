@@ -21,9 +21,6 @@ export default function Home() {
       </div>
 
       <div className="flex w-screen flex-col items-center sm:h-auto sm:w-auto sm:items-start">
-        <div className="relative h-16 w-60">
-          <Image src="/logo.svg" alt="logo" layout="fill" objectFit="contain" />
-        </div>
         <CheckoutCard />
       </div>
     </div>
