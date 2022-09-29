@@ -19,7 +19,7 @@ const handler = async (req: NextApiRequest, res: NextApiResponse) => {
     const response = await sdk.session.create({
       amount: amount,
       recipient: data.walletAddress,
-      success_url: "http://localhost:3000/success",
+      success_url: "https://sponsor-z4re.vercel.app/success",
     });
 
     res.status(200).json(response);
