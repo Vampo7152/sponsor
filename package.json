@@ -8,9 +8,8 @@
   },
   "dependencies": {
     "@candypay/checkout-sdk": "^0.1.5",
-    "@candypay/react-checkout-sdk": "^0.0.4",
+    "@candypay/react-checkout-sdk": "^0.0.5",
     "@stripe/stripe-js": "^1.22.0",
-    "@types/coingecko-api": "^1.0.10",
     "add": "^2.0.6",
     "axios": "^0.25.0",
     "coingecko-api": "^1.0.10",
@@ -31,6 +30,7 @@
     "postcss": "^8.4.6",
     "standard-version": "^9.3.2",
     "tailwindcss": "^3.0.18",
+    "@types/coingecko-api": "^1.0.10",
     "typescript": "^4.5.5"
   },
   "version": "1.0.0"

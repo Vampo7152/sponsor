@@ -1,6 +1,5 @@
-import { FC, useEffect } from "react";
 import axios from "axios";
-import { useState } from "react";
+import { useState, FC, useEffect, useMemo } from "react";
 import data from "../../public/data.json";
 import { CheckoutButton } from "@candypay/react-checkout-sdk";
 import CoinGek from "coingecko-api";
@@ -16,10 +15,12 @@ const CheckoutCard: FC = () => {
     const res = await client.coins.fetch("solana", {}).then(res => {
       return res.data.market_data.current_price.usd;
     });
-    console.log(res);
+
+    const amnt = amount! / res;
+    const roundedAmnt = Math.round(amnt * 10000) / 10000;
 
     const { data } = await axios.post("/api/candypay", {
-      amount: amount! / res,
+      amount: roundedAmnt,
     });
 
     return data.session_id;
@@ -61,7 +62,7 @@ const CheckoutCard: FC = () => {
           ))}
         </div>
 
-        <CheckoutButton handleSession={fetchSessionId}>Checkout</CheckoutButton>
+        <CheckoutButton handleSession={fetchSessionId} />
       </div>
     </>
   );

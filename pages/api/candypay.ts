@@ -2,6 +2,11 @@ import { NextApiRequest, NextApiResponse } from "next";
 import { CandyPay } from "@candypay/checkout-sdk";
 import data from "../../public/data.json";
 
+const URL =
+  process.env.NODE_ENV === "production"
+    ? "https://sponsor-demo.vercel.app"
+    : "https://localhost:3000";
+
 const handler = async (req: NextApiRequest, res: NextApiResponse) => {
   const { amount } = req.body;
 

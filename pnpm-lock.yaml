@@ -2,7 +2,7 @@ lockfileVersion: 5.4
 
 specifiers:
   '@candypay/checkout-sdk': ^0.1.5
-  '@candypay/react-checkout-sdk': ^0.0.4
+  '@candypay/react-checkout-sdk': ^0.0.5
   '@stripe/stripe-js': ^1.22.0
   '@types/coingecko-api': ^1.0.10
   '@types/react': ^17.0.38
@@ -27,9 +27,8 @@ specifiers:
 
 dependencies:
   '@candypay/checkout-sdk': 0.1.5_typescript@4.8.4
-  '@candypay/react-checkout-sdk': 0.0.4_sfoxds7t5ydpegc3knd667wn6m
+  '@candypay/react-checkout-sdk': 0.0.5_sfoxds7t5ydpegc3knd667wn6m
   '@stripe/stripe-js': 1.38.1
-  '@types/coingecko-api': 1.0.10
   add: 2.0.6
   axios: 0.25.0
   coingecko-api: 1.0.10
@@ -43,6 +42,7 @@ dependencies:
   yarn: 1.22.19
 
 devDependencies:
+  '@types/coingecko-api': 1.0.10
   '@types/react': 17.0.50
   autoprefixer: 10.4.12_postcss@8.4.16
   eslint: 8.24.0
@@ -107,8 +107,8 @@ packages:
       - typescript
     dev: false
 
-  /@candypay/react-checkout-sdk/0.0.4_sfoxds7t5ydpegc3knd667wn6m:
-    resolution: {integrity: sha512-woH/81IGtM4dy1FAl/7/bchjV3VbQtaGVQ7/7XFKb1QG+7wV3YbpWywrCUJFk4ckL10/jL4tmxIlBQd/a4ZNsg==}
+  /@candypay/react-checkout-sdk/0.0.5_sfoxds7t5ydpegc3knd667wn6m:
+    resolution: {integrity: sha512-4QdgpUgX0UHGxVEwecpthWpYSwoHmByU8yUfZA9caH97y1C4BtQ3H1+O8fSQSoUhw+sJd7J6WwAoSKJc6RxKMg==}
     peerDependencies:
       react: ^18.2.0
     dependencies:
@@ -348,7 +348,7 @@ packages:
 
   /@types/coingecko-api/1.0.10:
     resolution: {integrity: sha512-ENJO5JzV7qTj8GfrRWAy8lom4RPQv03stvw2z9riz0z7WOXcaorc8OPov8JEekoGQ397O1BbvgPjZj7bWgqdgg==}
-    dev: false
+    dev: true
 
   /@types/istanbul-lib-coverage/2.0.4:
     resolution: {integrity: sha512-z/QT1XN4K4KYuslS23k62yDIDLwLFkzxOuMplDtObz0+y7VqJCaO2o+SPwHCvLFZh7xazvvoor2tA/hPz9ee7g==}
