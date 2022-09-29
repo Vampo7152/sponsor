@@ -1,6 +1,7 @@
 {
-  "name": "Avneesh",
-  "url": "https://sponsor.avneesh.tech",
-  "currency": "INR",
-  "defaultAmounts": [200, 500, 1000]
+  "name": "Anurag",
+  "url": "https://sponsor.anurag.tech",
+  "currency": "USD",
+  "defaultAmounts": [5, 10, 50],
+  "walletAddress": "FqYAWuqRb8QxwBgvhbuRPtou4zhWtg361axogVUeP222"
 }

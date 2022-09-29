@@ -2,6 +2,7 @@ import { AppProps } from "next/app";
 import "../styles/globals.css";
 import { NextSeo } from "next-seo";
 import data from "../public/data.json";
+import { CandyPayProvider } from "@candypay/react-checkout-sdk";
 
 function MyApp({ Component, pageProps }: AppProps) {
   return (
@@ -31,7 +32,9 @@ function MyApp({ Component, pageProps }: AppProps) {
           cardType: "summary_large_image",
         }}
       />
-      <Component {...pageProps} />
+      <CandyPayProvider publicApiKey={process.env.NEXT_PUBLIC_CP_API!}>
+        <Component {...pageProps} />
+      </CandyPayProvider>
     </>
   );
 }

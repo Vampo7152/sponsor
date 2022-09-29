@@ -1,32 +1,28 @@
-import { FC } from "react";
-
+import { FC, useEffect } from "react";
 import axios from "axios";
-import { loadStripe } from "@stripe/stripe-js";
 import { useState } from "react";
-const stripePromise = loadStripe(process.env.stripe_public_key!);
 import data from "../../public/data.json";
+import { CheckoutButton } from "@candypay/react-checkout-sdk";
+import CoinGek from "coingecko-api";
 
 const CheckoutCard: FC = () => {
   const [amount, setAmount] = useState<number | null>(data.defaultAmounts[1]);
   const [loading, setLoading] = useState<boolean>(false);
   const defaultAmounts = data.defaultAmounts;
 
-  const createCheckOutSession = async () => {
-    setLoading(true);
-    const stripe = await stripePromise;
+  const client = new CoinGek();
 
-    const checkoutSession = await axios.post("/api/create-checkout-session", {
-      amount: amount,
+  const fetchSessionId = async () => {
+    const res = await client.coins.fetch("solana", {}).then(res => {
+      return res.data.market_data.current_price.usd;
+    });
+    console.log(res);
+
+    const { data } = await axios.post("/api/candypay", {
+      amount: amount! / res,
     });
 
-    const result = await stripe?.redirectToCheckout({
-      sessionId: checkoutSession.data.id,
-    });
-
-    if (result?.error) {
-      alert(result?.error.message);
-      setLoading(false);
-    }
+    return data.session_id;
   };
 
   return (
@@ -60,28 +56,12 @@ const CheckoutCard: FC = () => {
               onClick={() => setAmount(buttonAmount)}
               key={buttonAmount}
             >
-              ₹{buttonAmount}
+              $&nbsp;{buttonAmount}
             </button>
           ))}
         </div>
-        <button
-          disabled={!amount || loading}
-          onClick={createCheckOutSession}
-          role="link"
-          className={`group mt-4 flex w-full items-center justify-center rounded-lg border-2 border-accent bg-accent px-6 py-3 text-xl font-semibold transition duration-200 hover:border-accent hover:bg-transparent hover:text-accent ${
-            amount || loading ? "" : "cursor-not-allowed opacity-50"
-          }`}
-        >
-          {loading ? (
-            <div
-              style={{ borderTopColor: "transparent" }}
-              className="inline-block h-6 w-6 animate-spin rounded-full border-4 border-solid border-darkerBlue group-hover:border-accent"
-              role="status"
-            />
-          ) : (
-            <span>Sponsor</span>
-          )}
-        </button>
+
+        <CheckoutButton handleSession={fetchSessionId}>Checkout</CheckoutButton>
       </div>
     </>
   );
